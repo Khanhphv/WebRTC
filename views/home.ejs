@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <video id="localStream" width="300" controls></video>
+		<br></br>
+		<!-- <video id="remoteStream" width="300" controls></video>
+		<br></br>
+		<input type="text" id="remoteId" placeholder="Remote ID">
+		<button id= "btnCall">Call</button> -->
+
+  </body>
+  <script>
+    navigator.mediaDevices.getUserMedia({ audio:false, video:true})
+    .then(stream =>{
+      const video = document.getElementById('localStream')
+      video.srcObject = stream;
+      video.onloadedmetadata = function () {
+        video.play();
+      };
+    })
+    .catch(err => console.log(err));
+  </script>
+</html>
